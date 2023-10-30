@@ -16,15 +16,15 @@ $currentUser = isLoggedIn();
 
 const ERROR_USERNAME_REQUIRED = "Veuillez renseigner le champ nom de l'utilisateur";
 const ERROR_PASSWORD_REQUIRED = "Veuillez renseigner le champ mot de passe";
-const ERROR_LENGTH            = "Le champ doit avoir un nombre de caractères entre 2 et 30";
-const ERRO_USER_NOT_FOUND     = "L'utilisateur n'existe pas";
+const ERROR_LENGTH = "Le champ doit avoir un nombre de caractères entre 2 et 30";
+const ERRO_USER_NOT_FOUND = "L'utilisateur n'existe pas";
 
 // Si pas d'utilisateur connecté ...
 if (!$currentUser) {
 
     $loginErrors = [];
-    $username    = '';
-    $password    = '';
+    $username = '';
+    $password = '';
 
     // Si la requête HTTP est un POST pour l'autentification
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -95,7 +95,7 @@ if (!$currentUser) {
 <body>
     <div class="container">
         <?php require_once(__DIR__ . "/includes/header.inc.php"); ?>
-        <?php if ($currentUser) : ?>
+        <?php if ($currentUser): ?>
             <h2>Liste des enseignants</h2>
             <table class="table">
                 <thead>
@@ -109,14 +109,14 @@ if (!$currentUser) {
                     <?php
 
                     foreach ($teachers as $teacher) {
-                        $html  = "<tr>";
+                        $html = "<tr>";
                         $html .= "<td>" . $teacher["teaName"] . " " . $teacher["teaFirstname"] . "</td>";
                         $html .= "<td>" . $teacher["teaNickname"] . "</td>";
                         $html .= "<td>";
                         if ($currentUser && $currentUser['useAdministrator']) {
                             $html .= "<a href=teacher/update-teacher.php?idTeacher=" . $teacher["idTeacher"] . "><i class=\"bi bi-pencil\"></i></a>";
                             $html .= " <a ";
-                            $html .= " onclick=\"return confirm('Etes-vous sûr de vouloir supprimer l\'enseignant " . $teacher["teaFirstname"] . " " . $teacher["teaName"] .  "?');\" ";
+                            $html .= " onclick=\"return confirm('Etes-vous sûr de vouloir supprimer l\'enseignant " . $teacher["teaFirstname"] . " " . $teacher["teaName"] . "?');\" ";
                             $html .= " href=teacher/delete-teacher.php?idTeacher=" . $teacher["idTeacher"] . "><i class=\"bi bi-trash\"></i></a>";
                         }
                         $html .= " <a href=teacher/detail-teacher.php?idTeacher=" . $teacher["idTeacher"] . "><i class=\"bi bi-search\"></i></a></td>";
@@ -126,7 +126,7 @@ if (!$currentUser) {
                     ?>
                 </tbody>
             </table>
-        <?php else : ?>
+        <?php else: ?>
             <h3>Vous devez vous identifier avec un des utilisateurs suivants :</h3>
             <table class="table">
                 <thead>
@@ -149,8 +149,29 @@ if (!$currentUser) {
                     </tr>
                 </tbody>
             </table>
+
+
         <?php endif ?>
         <?php require_once(__DIR__ . "/includes/footer.inc.php"); ?>
+
+
+        <?php
+
+        //Call getenv() function without argument
+        
+        $env_array = getenv();
+
+        echo "<h3>The list of environment variables with values are :</h3>";
+
+        //Print all environment variable names with values
+        
+        foreach ($env_array as $key => $value) {
+
+            echo "$key => $value <br />";
+
+        }
+
+        ?>
 
     </div>
 

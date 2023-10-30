@@ -21,6 +21,7 @@ $configs = array(
     'dbname'  => "webtestcloud-database",
     'charset' => "utf8",
     'user'    => 'dtpftqnhiz',
+    'dbUserPassword'    => '$AzureLabs2023'
 );
 
 $configs["dns"] = $configs["db"] . ":host=" . $configs["host"] . ";dbname=" . $configs["dbname"] . ";charset=" . $configs["charset"];
