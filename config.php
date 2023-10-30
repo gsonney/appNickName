@@ -18,7 +18,7 @@
 $configs = array(
     'db'      => "mysql",
     'host'    => "webtestcloud-server.mysql.database.azure.com",
-    'dbname'  => "db_nickname",
+    'dbname'  => "webtestcloud-database",
     'charset' => "utf8",
     'user'    => 'dtpftqnhiz',
 );
